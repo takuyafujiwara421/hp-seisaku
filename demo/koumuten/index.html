@@ -102,6 +102,19 @@ section{padding:clamp(3.5rem,9vw,6.5rem) 0}
 .flow p{margin:0;color:var(--gray);font-size:.9rem}
 .flow ol{padding:0;margin:0}
 
+/* ---- 内装セクション ---- */
+.feature{margin:0 0 2.5rem;background:#fff;border:1px solid var(--line)}
+.feature img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.feature figcaption{padding:1.6rem 1.8rem}
+.feature h3{font-family:var(--min);font-weight:400;margin:0 0 .7rem;
+  font-size:clamp(1.1rem,2.6vw,1.4rem);letter-spacing:.08em}
+.feature p{margin:0;color:var(--gray);font-size:.94rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.grid3 div{background:#fff;border:1px solid var(--line);padding:1.5rem 1.4rem;
+  border-top:3px solid var(--clay)}
+.grid3 h4{font-family:var(--min);font-weight:400;margin:0 0 .5rem;font-size:1.02rem;letter-spacing:.06em}
+.grid3 p{margin:0;color:var(--gray);font-size:.88rem}
+
 /* ---- 価格 ---- */
 .price-band{background:var(--moss);color:#fff}
 .price-band .sec-t{color:#fff}
@@ -171,6 +184,7 @@ footer li{margin-bottom:.4rem}
     <a class="logo" href="./">木下工務店<small>KINOSHITA KOMUTEN</small></a>
     <nav>
       <a href="#works">施工事例</a>
+      <a href="#interior">内装</a>
       <a href="#flow">家づくりの流れ</a>
       <a href="#price">費用の目安</a>
       <a href="#about">会社案内</a>
@@ -294,6 +308,47 @@ footer li{margin-bottom:.4rem}
         </dl>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ============================ 内装 -->
+<section id="interior" style="background:var(--kinari-d)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-en">INTERIOR</span>
+      <h2 class="sec-t">最近、ご要望の多いもの</h2>
+      <p class="sec-lead">
+        この5年で、聞かれることがはっきり変わりました。
+        「広いリビング」より「洗濯が楽になる動線」を求められることが増えています。
+      </p>
+    </div>
+
+    <figure class="feature reveal">
+      <img src="img/04-doma.jpg" alt="土間のある広い玄関。自転車とベビーカーがそのまま置かれ、壁面に木の造作棚がある" loading="lazy">
+      <figcaption>
+        <h3>土間のある、広い玄関</h3>
+        <p>
+          いま一番ご要望が多いのがこれです。自転車もベビーカーも、濡れたレインコートも、
+          玄関で完結させてしまう。家の中に持ち込まないだけで、掃除の手間がはっきり減ります。
+          コート掛けと造作棚まで一体で作るので、あとから物が増えても散らかりません。
+        </p>
+      </figcaption>
+    </figure>
+
+    <div class="grid3 reveal">
+      <div>
+        <h4>ランドリールーム</h4>
+        <p>洗う・干す・たたむを一室に。雨の日に家じゅうへ洗濯物を運ばなくて済みます。</p>
+      </div>
+      <div>
+        <h4>ヌック</h4>
+        <p>リビングの一角にこもれる小さな空間。子どもの勉強にも、ひとりで本を読むのにも。</p>
+      </div>
+      <div>
+        <h4>造作のワークスペース</h4>
+        <p>在宅勤務が定着してから増えました。一枚板のカウンターを壁付けにするのが定番です。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -426,7 +481,8 @@ footer li{margin-bottom:.4rem}
       <div><h5>木下工務店</h5><p>東京都〇〇区〇〇 1-2-3<br>TEL 03-0000-0000<br>受付 9:00〜18:00（日祝休）</p></div>
       <div><h5>メニュー</h5><ul>
         <li><a href="#works">施工事例</a></li><li><a href="#price">費用の目安</a></li>
-        <li><a href="#flow">家づくりの流れ</a></li><li><a href="#guarantee">建てたあとのこと</a></li>
+        <li><a href="#interior">内装</a>
+      <a href="#flow">家づくりの流れ</a></li><li><a href="#guarantee">建てたあとのこと</a></li>
         <li><a href="#about">会社案内</a></li></ul></div>
       <div><h5>対応エリア</h5><p>東京23区<br>多摩地域<br>埼玉県南部<br><br>それ以外の地域もご相談ください。</p></div>
     </div>
