@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【制作サンプル】さくら行政書士事務所｜相続・許認可のご相談</title>
+<meta name="description" content="※これはホームページ制作の見本として作成した架空の事務所です。実在しません。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root {
+    --accent: #2b3f6b; --accent-soft: #4a6299; --accent-pale: #eaeff8;
+    --bg-soft: #f7f9fc; --line: #dde3ee;
+  }
+  .fee-note { font-size:.85rem; color:var(--ink-light); margin-top:.4rem; }
+  .worry {
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:1.3rem 1.5rem; position:relative;
+  }
+  .worry::before {
+    content:"“"; position:absolute; top:.2rem; left:.7rem;
+    font-size:2.6rem; color:var(--accent-pale); line-height:1; font-family:serif;
+  }
+  .worry p { margin:0; padding-left:1.3rem; color:var(--ink-mid); }
+  .profile { display:grid; grid-template-columns:auto 1fr; gap:1.6rem; align-items:start; }
+  .avatar {
+    width:96px; height:96px; border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+    color:#fff; display:grid; place-items:center; font-size:1.9rem; font-weight:700;
+  }
+  @media (max-width:520px){ .profile{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  これはホームページ制作の<strong>見本</strong>として作成した<strong>架空の行政書士事務所</strong>です。実在しません。
+  <a href="../../">制作サービスのページへ戻る</a>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">さくら行政書士事務所<small>ADMINISTRATIVE SCRIVENER</small></a>
+    <nav class="nav">
+      <a href="#service">取扱業務</a>
+      <a href="#fee">費用</a>
+      <a href="#profile">事務所案内</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact" class="btn">初回相談は無料</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">さいたま市・初回相談無料</span>
+    <h1>「これ、誰に相談すればいいのか<br>分からない」から始めて大丈夫です。</h1>
+    <p class="lead">
+      相続の手続き、お店を始めるための許可、車庫証明、内容証明。
+      役所に出す書類は種類が多く、どこから手をつければいいのか分かりにくいものです。
+      まずはお話をお聞きして、必要な手続きと費用を整理するところからお手伝いします。
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-lg">無料で相談する</a>
+      <a href="#fee" class="btn btn-ghost btn-lg">費用を見る</a>
+    </div>
+    <p class="muted" style="margin-top:1.4rem">
+      初回のご相談は60分まで無料です。ご相談だけで終わっても構いません。
+    </p>
+  </div>
+</div>
+
+<section id="worry">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">CASE</span>
+      <h2>こんなご相談をお受けしています</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="worry reveal"><p>父が亡くなり、銀行から「遺産分割協議書を出してください」と言われたが、何を書けばいいのか分からない。</p></div>
+      <div class="worry reveal"><p>飲食店を開きたい。保健所の営業許可と深夜酒類提供の届出、どちらも必要なのか知りたい。</p></div>
+      <div class="worry reveal"><p>建設業の許可を取りたいが、要件を満たしているのか自分では判断できない。</p></div>
+      <div class="worry reveal"><p>外国人スタッフを雇いたい。在留資格の変更が必要かどうか相談したい。</p></div>
+      <div class="worry reveal"><p>貸したお金が返ってこない。内容証明を送りたいが書き方が分からない。</p></div>
+      <div class="worry reveal"><p>会社の車を増やしたので車庫証明が必要。手続きを代行してほしい。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="service" class="soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">SERVICE</span>
+      <h2>取扱業務</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal"><h3>相続・遺言</h3>
+        <p>遺産分割協議書の作成、相続関係説明図、戸籍の収集、遺言書の起案。銀行や法務局に提出する書類一式をご用意します。</p></div>
+      <div class="card reveal"><h3>建設業許可</h3>
+        <p>新規申請、更新、業種追加、決算変更届。要件を満たしているかの事前確認から承ります。</p></div>
+      <div class="card reveal"><h3>飲食店・風営法の許可</h3>
+        <p>飲食店営業許可、深夜酒類提供飲食店営業の届出、古物商許可。図面の作成も含めて代行します。</p></div>
+      <div class="card reveal"><h3>在留資格（ビザ）</h3>
+        <p>就労資格の申請・変更・更新、永住許可申請。雇用する企業側のご相談にも対応します。</p></div>
+      <div class="card reveal"><h3>契約書・内容証明</h3>
+        <p>各種契約書の作成・チェック、内容証明郵便の作成と発送代行。</p></div>
+      <div class="card reveal"><h3>自動車関係</h3>
+        <p>車庫証明、名義変更、出張封印。法人のお客様の複数台まとめてのご依頼も承ります。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="fee">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">FEE</span>
+      <h2>費用</h2>
+      <p>「いくらかかるか分からない」が一番のご不安だと思いますので、目安をお出しします。</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>業務</th><th class="num">報酬（税別）</th><th class="num">実費（印紙代等）</th></tr></thead>
+        <tbody>
+          <tr><td>遺産分割協議書の作成</td><td class="num">55,000円〜</td><td class="num">戸籍取得の実費</td></tr>
+          <tr><td>相続手続き一式（戸籍収集含む）</td><td class="num">120,000円〜</td><td class="num">実費別途</td></tr>
+          <tr><td>建設業許可（新規・知事許可）</td><td class="num">130,000円〜</td><td class="num">90,000円</td></tr>
+          <tr><td>建設業許可の更新</td><td class="num">55,000円〜</td><td class="num">50,000円</td></tr>
+          <tr><td>飲食店営業許可</td><td class="num">45,000円〜</td><td class="num">16,000円程度</td></tr>
+          <tr><td>深夜酒類提供飲食店営業の届出</td><td class="num">70,000円〜</td><td class="num">—</td></tr>
+          <tr><td>古物商許可</td><td class="num">45,000円〜</td><td class="num">19,000円</td></tr>
+          <tr><td>在留資格変更許可申請</td><td class="num">100,000円〜</td><td class="num">4,000円</td></tr>
+          <tr><td>内容証明の作成・発送</td><td class="num">30,000円〜</td><td class="num">2,000円程度</td></tr>
+          <tr><td>車庫証明</td><td class="num">12,000円〜</td><td class="num">2,700円程度</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted mt-2">
+      ※ 案件の内容によって変わります。<strong>着手前に必ずお見積りをお出しし、ご了承をいただいてから進めます。</strong>
+      途中で金額が増えることはありません。
+    </p>
+  </div>
+</section>
+
+<section id="profile" class="soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">PROFILE</span>
+      <h2>事務所案内</h2>
+    </div>
+    <div class="profile reveal">
+      <div class="avatar">佐藤</div>
+      <div>
+        <h3 style="margin:0 0 .6rem">行政書士　佐藤 さくら</h3>
+        <p style="color:var(--ink-mid)">
+          一般企業で総務を10年務めたのち、行政書士として開業しました。
+          会社側で申請書類を作っていた経験があるので、
+          「役所の言葉が分かりにくい」というお気持ちがよく分かります。
+          専門用語を使わずにご説明することを心がけています。
+        </p>
+        <dl class="deflist" style="margin-top:1.4rem">
+          <dt>事務所名</dt><dd>さくら行政書士事務所</dd>
+          <dt>所在地</dt><dd>埼玉県さいたま市〇〇区 1-2-3 〇〇ビル 4階</dd>
+          <dt>電話</dt><dd>048-000-0000</dd>
+          <dt>受付時間</dt><dd>平日 9:00〜18:00（土日祝は事前予約で対応）</dd>
+          <dt>登録番号</dt><dd>第00000000号（埼玉県行政書士会所属）</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="narrow">
+    <div class="sec-head reveal">
+      <span class="label">FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <details class="reveal"><summary>相談だけでも大丈夫ですか。</summary>
+      <p>もちろんです。初回60分は無料でお受けしています。お話を伺った結果、
+      手続きが不要だと分かることもあります。その場合も費用はいただきません。</p></details>
+    <details class="reveal"><summary>何を持っていけばいいですか。</summary>
+      <p>お手元にある書類（役所からの通知、契約書など）をお持ちください。
+      何も無くても、状況をお聞かせいただければ必要なものをご案内します。</p></details>
+    <details class="reveal"><summary>土日しか時間が取れません。</summary>
+      <p>事前にご予約いただければ、土日祝も対応いたします。
+      オンラインでのご相談も承っています。</p></details>
+    <details class="reveal"><summary>弁護士に頼むべき案件かどうか分かりません。</summary>
+      <p>お話を伺い、行政書士では扱えない内容（争いのある案件など）であれば、
+      その旨をはっきりお伝えし、適切な専門家をご紹介します。無理にお引き受けすることはありません。</p></details>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="narrow">
+    <h2>初回のご相談は無料です</h2>
+    <p>「これは相談していい内容だろうか」と迷われる必要はありません。まずはお気軽にご連絡ください。</p>
+    <p style="margin-bottom:.6rem"><a href="tel:0480000000" style="color:#fff;font-size:1.8rem;font-weight:700;text-decoration:none">048-000-0000</a></p>
+    <p style="opacity:.9;margin-bottom:2rem">平日 9:00〜18:00</p>
+    <a href="mailto:example@example.com?subject=%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87%E3%81%AE%E3%81%94%E4%BE%9D%E9%A0%BC" class="btn btn-lg">メールで相談する</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>さくら行政書士事務所</h4>
+        <p style="margin:0">埼玉県さいたま市〇〇区 1-2-3<br>〇〇ビル 4階<br>TEL 048-000-0000</p></div>
+      <div><h4>取扱業務</h4>
+        <ul><li>相続・遺言</li><li>建設業許可</li><li>飲食店・風営法の許可</li><li>在留資格（ビザ）</li><li>契約書・内容証明</li><li>自動車関係</li></ul></div>
+      <div><h4>受付時間</h4>
+        <p style="margin:0">平日 9:00〜18:00<br>土日祝は事前予約で対応<br><br>オンライン相談も<br>承っています。</p></div>
+    </div>
+    <div class="copy">
+      これは制作見本として作成した架空の事務所のサイトです。実在しません。
+      &nbsp;/&nbsp; <a href="../../">制作サービスのページへ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');io.unobserve(e.target);}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</body>
+</html>

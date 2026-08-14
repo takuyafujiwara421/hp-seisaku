@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【制作サンプル】山田工務店｜練馬区の小さな工事・リフォーム</title>
+<meta name="description" content="※これはホームページ制作の見本として作成した架空の工務店です。実在しません。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root {
+    --accent: #8a4b26; --accent-soft: #b06a3c; --accent-pale: #f7ece4;
+    --bg-soft: #fbf7f4; --line: #ead9cd;
+  }
+  /* 写真が1枚も無くても「現場感」を出すための飾り */
+  .tool-strip {
+    display: flex; gap: .5rem; flex-wrap: wrap; margin: 1.5rem 0 0;
+  }
+  .tool-strip span {
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: .35rem .95rem; font-size: .85rem; color: var(--accent);
+  }
+  .price-card {
+    border-left: 4px solid var(--accent-soft); background: #fff;
+    border: 1px solid var(--line); border-left-width: 4px;
+    border-radius: 8px; padding: 1.3rem 1.5rem;
+  }
+  .price-card .amt { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .voice { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1.5rem; }
+  .voice .who { font-size:.85rem; color:var(--ink-light); margin-top:.8rem; }
+  .tel-big {
+    font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 700;
+    color: var(--accent); text-decoration: none; letter-spacing: .02em;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  これはホームページ制作の<strong>見本</strong>として作成した<strong>架空の工務店</strong>です。実在しません。
+  <a href="../../">制作サービスのページへ戻る</a>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">山田工務店<small>NERIMA / SINCE 1998</small></a>
+    <nav class="nav">
+      <a href="#service">できること</a>
+      <a href="#price">料金の目安</a>
+      <a href="#flow">工事の流れ</a>
+      <a href="#voice">お客様の声</a>
+      <a href="#contact" class="btn">無料で見積もる</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">練馬区・板橋区・豊島区</span>
+    <h1>「これ、誰に頼めばいいの」<br>その小さな工事、うちで直せます。</h1>
+    <p class="lead">
+      棚を1枚つけたい。ドアが閉まらない。雨どいが外れた。
+      大きな工事じゃないから頼みにくい——そういうご相談こそ、地元の工務店の出番です。
+      1998年から練馬で、そうした小さな工事を積み重ねてきました。
+    </p>
+    <div class="hero-actions">
+      <a href="tel:0300000000" class="btn btn-lg">電話で相談する</a>
+      <a href="#contact" class="btn btn-ghost btn-lg">メールで見積もりを頼む</a>
+    </div>
+    <div class="tool-strip">
+      <span>見積り無料</span><span>出張費なし（練馬区内）</span><span>即日対応できる場合あり</span><span>女性スタッフ在籍</span>
+    </div>
+  </div>
+</div>
+
+<section id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">SERVICE</span>
+      <h2>できること</h2>
+      <p>「こんな小さいことでも頼んでいいのかな」と思われる工事ほど、お気軽にどうぞ。</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal"><span class="num">住</span><h3>住まいの困りごと</h3>
+        <p>建具の調整、網戸の張り替え、手すりの取り付け、棚の設置、雨どいの補修、水まわりのちょっとした不具合。</p></div>
+      <div class="card reveal"><span class="num">リ</span><h3>リフォーム</h3>
+        <p>キッチン・浴室・トイレの入れ替え、壁紙の張り替え、床の重ね張り、間仕切りの追加。部分的な工事も承ります。</p></div>
+      <div class="card reveal"><span class="num">外</span><h3>外まわり</h3>
+        <p>外壁の塗り替え、屋根の点検・補修、ブロック塀の補修、カーポートの設置、駐車場の土間打ち。</p></div>
+      <div class="card reveal"><span class="num">安</span><h3>バリアフリー工事</h3>
+        <p>段差の解消、手すりの設置、引き戸への交換。介護保険の住宅改修（20万円まで）のご相談も承ります。</p></div>
+      <div class="card reveal"><span class="num">店</span><h3>店舗・事務所</h3>
+        <p>小規模な内装工事、棚・カウンターの造作、原状回復。営業時間外の工事もご相談ください。</p></div>
+      <div class="card reveal"><span class="num">急</span><h3>急ぎの対応</h3>
+        <p>雨漏り、ガラスの破損、鍵の不具合など。状況によっては当日中にお伺いします。まずはお電話ください。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="price" class="soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">PRICE</span>
+      <h2>料金の目安</h2>
+      <p>「聞かないと分からない」が一番不安だと思いますので、よくある工事の目安を出しておきます。</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">手すりの取り付け</h3>
+        <div class="amt">18,000円〜</div><p class="muted">材料費込み・1か所</p></div>
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">網戸の張り替え</h3>
+        <div class="amt">4,000円〜</div><p class="muted">1枚あたり</p></div>
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">壁紙の張り替え</h3>
+        <div class="amt">1,200円〜</div><p class="muted">1平方メートルあたり</p></div>
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">トイレの入れ替え</h3>
+        <div class="amt">120,000円〜</div><p class="muted">本体・工事費込み</p></div>
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">外壁の塗り替え</h3>
+        <div class="amt">680,000円〜</div><p class="muted">30坪程度の戸建ての場合</p></div>
+      <div class="price-card reveal"><h3 style="margin:0 0 .4rem">雨どいの補修</h3>
+        <div class="amt">15,000円〜</div><p class="muted">部分交換の場合</p></div>
+    </div>
+
+    <p class="muted mt-2">
+      ※ 現場の状況で変わります。お見積りは無料です。<strong>工事の前に必ず金額をお出しし、ご了承をいただいてから着工します。</strong>
+      追加費用が必要になった場合も、勝手に進めることはありません。
+    </p>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">FLOW</span>
+      <h2>工事の流れ</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal"><span class="num">1</span><h3>ご連絡</h3><p>お電話かメールで、困っている内容をお聞かせください。写真を送っていただけると話が早いです。</p></div>
+      <div class="card reveal"><span class="num">2</span><h3>現地の確認</h3><p>ご都合のよい日にお伺いし、状況を拝見します。練馬区内は出張費をいただきません。</p></div>
+      <div class="card reveal"><span class="num">3</span><h3>お見積り</h3><p>金額と工期を書面でお出しします。ここまで無料です。他社と比べていただいて構いません。</p></div>
+      <div class="card reveal"><span class="num">4</span><h3>工事</h3><p>ご了承をいただいてから着工します。近隣へのご挨拶もこちらで行います。</p></div>
+      <div class="card reveal"><span class="num">5</span><h3>お引き渡し</h3><p>仕上がりを一緒にご確認ください。気になる点はその場で直します。</p></div>
+      <div class="card reveal"><span class="num">6</span><h3>お支払い</h3><p>工事完了後のお支払いです。現金・お振込みに対応しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="voice" class="soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">VOICE</span>
+      <h2>お客様の声</h2>
+      <p class="muted">※ 見本用に作成した架空の内容です。</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="voice reveal"><p>「玄関の段差に手すりをつけていただきました。母が一人で外に出られるようになり、本当に助かっています。小さな工事なのに丁寧に見てくださいました。」</p><p class="who">練馬区・T様（60代）</p></div>
+      <div class="voice reveal"><p>「雨漏りで慌てて電話したところ、その日のうちに来てくださいました。応急処置をしてから、後日きちんと直していただきました。」</p><p class="who">板橋区・S様（40代）</p></div>
+      <div class="voice reveal"><p>「見積りの金額から一円も増えませんでした。追加工事が必要になったときも、先に相談してくださったので安心でした。」</p><p class="who">豊島区・K様（50代）</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="narrow">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>見積りは無料です。「これって直せる？」というご相談だけでも構いません。</p>
+    <p style="margin-bottom:.6rem"><a href="tel:0300000000" class="tel-big" style="color:#fff">03-0000-0000</a></p>
+    <p style="opacity:.9;margin-bottom:2rem">受付時間 8:00〜19:00（日曜・祝日を除く）</p>
+    <a href="mailto:example@example.com?subject=%E5%B7%A5%E4%BA%8B%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" class="btn btn-lg">メールで相談する</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>山田工務店</h4>
+        <p style="margin:0">東京都練馬区〇〇 1-2-3<br>TEL 03-0000-0000</p>
+      </div>
+      <div>
+        <h4>会社概要</h4>
+        <dl class="deflist" style="color:#b9c4c6">
+          <dt style="color:#8b9799;border-color:#33403f">創業</dt><dd style="color:#b9c4c6;border-color:#33403f">1998年</dd>
+          <dt style="color:#8b9799;border-color:#33403f">代表</dt><dd style="color:#b9c4c6;border-color:#33403f">山田 太郎</dd>
+          <dt style="color:#8b9799;border-color:#33403f">対応</dt><dd style="color:#b9c4c6;border-color:#33403f">練馬区・板橋区・豊島区</dd>
+          <dt style="color:#8b9799;border-color:#33403f">建設業許可</dt><dd style="color:#b9c4c6;border-color:#33403f">東京都知事許可（般-00）第000000号</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>受付時間</h4>
+        <p style="margin:0">8:00〜19:00<br>日曜・祝日を除く<br><br>急ぎの場合は時間外でも<br>お電話ください。</p>
+      </div>
+    </div>
+    <div class="copy">
+      これは制作見本として作成した架空の工務店のサイトです。実在しません。
+      &nbsp;/&nbsp; <a href="../../">制作サービスのページへ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');io.unobserve(e.target);}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</body>
+</html>
