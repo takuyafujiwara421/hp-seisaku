@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【制作サンプル】中華 福来｜浅草の町中華</title>
+<meta name="description" content="※これはホームページ制作の見本として作成した架空の中華料理店です。実在しません。">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============================================================
+   町中華サイト専用スタイル
+   共通CSSは使わない。工務店＝写真主役／士業＝情報の整理／町中華＝看板と紙の質感、
+   と骨格から分ける。
+   ★写真を1枚も使わずに「店の空気」を出す。撮影素材が無いお店でも
+     初日から公開できることの証明を兼ねている。
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --enji:#8b2e22;      /* えんじ */
+  --enji-d:#6d2119;
+  --shu:#c0392b;       /* 朱 */
+  --cream:#f8f0dc;     /* 紙の地 */
+  --ochre:#ecd9a8;     /* 黄土 */
+  --sumi:#33261c;      /* 墨 */
+  --kin:#c9a227;       /* 金 */
+  --min:"Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho",serif;
+  --go:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{overflow-x:clip;max-width:100%}
+body{margin:0;background:var(--cream);color:var(--sumi);font-family:var(--go);
+  font-size:16px;line-height:1.9;letter-spacing:.03em}
+html[lang="zh-Hans"]{--min:"PingFang SC","Heiti SC","Microsoft YaHei",serif}
+html[lang="ko"]{--min:"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+html[lang="en"]{--min:Georgia,"Times New Roman",serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--enji)}
+.wrap{width:min(960px,100% - 2.2rem);margin-inline:auto}
+
+/* ---- 和柄の地 ---- */
+.pattern{
+  background-color:var(--enji);
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 8px,transparent 8px 16px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.08) 0 8px,transparent 8px 16px);
+}
+
+/* ---- 言語バー ---- */
+.langbar{background:var(--sumi);padding:.4rem 0}
+.langbar .wrap{display:flex;justify-content:flex-end;gap:.2rem;flex-wrap:wrap}
+.langbar button{background:none;border:1px solid rgba(248,240,220,.35);color:var(--cream);
+  font:inherit;font-size:.76rem;padding:.1rem .65rem;cursor:pointer;border-radius:2px}
+.langbar button[aria-pressed="true"]{background:var(--kin);border-color:var(--kin);color:#3a2c10;font-weight:700}
+
+/* ---- 看板（写真の代わりの主役） ---- */
+.signboard{position:relative;padding:clamp(2.6rem,7vw,4.5rem) 0 clamp(3.4rem,8vw,5rem);
+  text-align:center;color:var(--cream);overflow:hidden}
+.signboard::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;
+  background:repeating-linear-gradient(90deg,var(--kin) 0 22px,var(--enji-d) 22px 44px)}
+.sign{display:inline-block;border:6px solid var(--kin);background:var(--shu);
+  padding:clamp(1rem,3vw,1.7rem) clamp(2rem,6vw,3.6rem);position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.sign::before{content:"";position:absolute;inset:6px;border:1px solid rgba(255,255,255,.5)}
+.sign h1{font-family:var(--min);font-weight:400;margin:0;line-height:1.25;
+  font-size:clamp(2.2rem,9vw,4.4rem);letter-spacing:.18em;text-indent:.18em;
+  text-shadow:2px 3px 0 rgba(0,0,0,.35)}
+.sign .yomi{display:block;font-family:var(--go);font-size:.72rem;letter-spacing:.42em;
+  text-indent:.42em;margin-top:.5rem;opacity:.92}
+.since{margin-top:1.4rem;font-family:var(--min);font-size:clamp(.92rem,2.4vw,1.08rem);
+  letter-spacing:.14em}
+.bulb{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--kin);
+  margin:0 .5rem;vertical-align:middle;box-shadow:0 0 12px 3px rgba(201,162,39,.75);
+  animation:flicker 3.4s infinite}
+@keyframes flicker{0%,100%{opacity:1}47%{opacity:.55}52%{opacity:1}70%{opacity:.75}}
+
+/* ---- 暖簾 ---- */
+.noren{display:flex;justify-content:center;gap:3px;margin-top:-1px}
+.noren span{flex:0 0 auto;width:clamp(44px,11vw,74px);height:clamp(48px,12vw,74px);
+  background:var(--enji-d);border-radius:0 0 3px 3px;
+  display:grid;place-items:center;color:var(--ochre);font-family:var(--min);
+  font-size:clamp(1.1rem,3.4vw,1.5rem);transform-origin:top center;
+  animation:sway 5.5s ease-in-out infinite}
+.noren span:nth-child(2){animation-delay:-1.2s}
+.noren span:nth-child(3){animation-delay:-2.4s}
+.noren span:nth-child(4){animation-delay:-3.6s}
+@keyframes sway{0%,100%{transform:rotate(-1.1deg)}50%{transform:rotate(1.1deg)}}
+@media(prefers-reduced-motion:reduce){.noren span,.bulb{animation:none}}
+
+/* ---- 営業情報の帯 ---- */
+.today{background:var(--sumi);color:var(--cream);padding:1rem 0;font-size:.9rem}
+.today .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2rem;text-align:center}
+.today b{color:var(--kin)}
+
+/* ---- セクション ---- */
+section{padding:clamp(2.8rem,7vw,4.5rem) 0}
+.sec-h{text-align:center;margin-bottom:2.4rem}
+.sec-h h2{font-family:var(--min);font-weight:400;font-size:clamp(1.4rem,4vw,2rem);
+  margin:0 0 .5rem;letter-spacing:.2em;text-indent:.2em;position:relative;display:inline-block;padding:0 1.6rem}
+.sec-h h2::before,.sec-h h2::after{content:"";position:absolute;top:50%;width:1.1rem;height:1px;background:var(--enji)}
+.sec-h h2::before{left:0}.sec-h h2::after{right:0}
+.sec-h p{margin:0;color:#6b5a4b;font-size:.9rem}
+
+/* ---- お品書き（紙の質感） ---- */
+.sheet{background:#fffdf6;border:1px solid #e0d3b4;padding:clamp(1.4rem,4vw,2.4rem);
+  box-shadow:0 2px 12px rgba(51,38,28,.07)}
+.menu-cat{font-family:var(--min);font-size:1.12rem;letter-spacing:.16em;color:var(--enji);
+  border-bottom:2px solid var(--enji);padding-bottom:.35rem;margin:2rem 0 .6rem}
+.menu-cat:first-of-type{margin-top:0}
+.menu-list{list-style:none;padding:0;margin:0}
+.menu-list li{display:flex;align-items:baseline;gap:.5rem;padding:.5rem 0;
+  border-bottom:1px dotted #d8c9a8}
+.mn{font-weight:700;white-space:nowrap}
+.mn small{display:block;font-weight:400;font-size:.75rem;color:#8a7862;letter-spacing:.04em}
+.dots{flex:1;border-bottom:1px dotted #c9b891;transform:translateY(-.25rem)}
+.mp{white-space:nowrap;font-family:var(--min);font-size:1.02rem}
+.osusume{color:var(--shu);font-size:.7rem;border:1px solid var(--shu);padding:.05rem .4rem;
+  margin-left:.4rem;vertical-align:middle;white-space:nowrap}
+
+/* ---- 名物 ---- */
+/* 4つが1行に収まるよう最小幅を詰める（230pxだと960pxのwrapに4つ入らず3+1になる） */
+.meibutsu{display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:1.1rem}
+.meibutsu div{background:#fffdf6;border:1px solid #e0d3b4;padding:1.5rem 1.2rem;text-align:center}
+/* ★line-heightで中央寄せするとborder分だけ下にずれる。gridのplace-itemsで中央に置く */
+.meibutsu .ico{width:3.4rem;height:3.4rem;margin:0 auto .8rem;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--enji);border-radius:50%}
+.meibutsu .ico span{font-family:var(--min);font-size:1.8rem;color:var(--enji);
+  line-height:1;display:block;transform:translateY(.04em)}
+.meibutsu h3{font-family:var(--min);font-weight:400;margin:0 0 .5rem;font-size:1.1rem;letter-spacing:.1em}
+.meibutsu p{margin:0;font-size:.88rem;color:#6b5a4b}
+
+/* ---- 店の情報 ---- */
+.info{width:100%;border-collapse:collapse;font-size:.92rem;background:#fffdf6}
+.info th,.info td{border:1px solid #e0d3b4;padding:.85rem 1rem;text-align:left;vertical-align:top}
+.info th{background:var(--ochre);width:8.5rem;font-weight:700;white-space:nowrap}
+.tel-row{font-family:var(--min);font-size:1.5rem;color:var(--enji);text-decoration:none;letter-spacing:.04em}
+
+/* ---- CTA ---- */
+.cta{text-align:center;color:var(--cream)}
+.cta h2{font-family:var(--min);font-weight:400;font-size:clamp(1.3rem,4vw,1.9rem);
+  letter-spacing:.16em;margin:0 0 1rem}
+.cta p{margin:0 auto 1.8rem;max-width:32rem;font-size:.92rem;opacity:.95}
+.btn{display:inline-block;background:var(--kin);color:#3a2c10;text-decoration:none;
+  font-weight:700;padding:1rem 2.6rem;border-radius:2px;letter-spacing:.1em;
+  border-bottom:3px solid #9b7c1c}
+.btn:hover{filter:brightness(1.07)}
+
+footer{background:var(--sumi);color:#bda98f;padding:2.4rem 0 1.5rem;font-size:.85rem;text-align:center}
+footer a{color:var(--ochre)}
+.copy{border-top:1px solid #4a3a2c;margin-top:1.4rem;padding-top:1.2rem;font-size:.76rem;color:#8a7862}
+
+.demo-note{background:#7a4a12;color:#fff;text-align:center;padding:.65rem 1rem;font-size:.82rem;line-height:1.7}
+.demo-note a{color:#ffdba8;font-weight:700}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="demo-note">
+  これはホームページ制作の<strong>見本</strong>として作成した<strong>架空の中華料理店</strong>です。実在しません。
+  <strong>写真を1枚も使わず</strong>に作っています。 <a href="../../">制作サービスへ戻る</a>
+</div>
+
+<div class="langbar">
+  <div class="wrap">
+    <button data-lang="ja" aria-pressed="true">日本語</button>
+    <button data-lang="en" aria-pressed="false">English</button>
+    <button data-lang="zh" aria-pressed="false">中文</button>
+    <button data-lang="ko" aria-pressed="false">한국어</button>
+  </div>
+</div>
+
+<div class="signboard pattern">
+  <div class="wrap">
+    <div class="sign">
+      <h1>中華 福来</h1>
+      <span class="yomi">CHUKA FUKURAI</span>
+    </div>
+    <p class="since">
+      <span class="bulb"></span>
+      <span data-i18n="since">浅草・創業昭和五十二年</span>
+      <span class="bulb"></span>
+    </p>
+  </div>
+</div>
+<div class="noren">
+  <span>福</span><span>来</span><span>中</span><span>華</span>
+</div>
+
+<div class="today">
+  <div class="wrap">
+    <div><b data-i18n="t1">営業</b> 11:30〜14:30／17:00〜21:30</div>
+    <div><b data-i18n="t2">定休</b> <span data-i18n="t2v">水曜日</span></div>
+    <div><b data-i18n="t3">席</b> <span data-i18n="t3v">カウンター8・テーブル16</span></div>
+    <div><b data-i18n="t4">支払</b> <span data-i18n="t4v">現金・QR決済</span></div>
+  </div>
+</div>
+
+<!-- ============================ 名物 -->
+<section>
+  <div class="wrap">
+    <div class="sec-h reveal">
+      <h2 data-i18n="h1">名物</h2>
+      <p data-i18n="h1s">四十七年、同じ鍋で作り続けているものです。</p>
+    </div>
+    <div class="meibutsu reveal">
+      <div>
+        <div class="ico"><span>餃</span></div>
+        <h3 data-i18n="m1">焼き餃子</h3>
+        <p data-i18n="m1p">皮から手作り。一日六百個。夜は売り切れることがあります。</p>
+      </div>
+      <div>
+        <div class="ico"><span>麺</span></div>
+        <h3 data-i18n="m2">中華そば</h3>
+        <p data-i18n="m2p">豚骨と鶏ガラ、香味野菜だけ。継ぎ足しはしていません。</p>
+      </div>
+      <div>
+        <div class="ico"><span>飯</span></div>
+        <h3 data-i18n="m3">炒飯</h3>
+        <p data-i18n="m3p">強火で一気に。冷めても固くならない米の炊き方をしています。</p>
+      </div>
+      <div>
+        <div class="ico"><span>唐</span></div>
+        <h3 data-i18n="m4">鶏の唐揚げ</h3>
+        <p data-i18n="m4p">注文が入ってから二度揚げ。持ち帰りが一番出ます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ お品書き -->
+<section class="pattern" style="padding-top:clamp(2.4rem,6vw,4rem)">
+  <div class="wrap">
+    <div class="sec-h reveal" style="color:var(--cream)">
+      <h2 data-i18n="h2" style="color:var(--cream)">お品書き</h2>
+      <p data-i18n="h2s" style="color:#e4d3b8">表示は税込みです。</p>
+    </div>
+    <div class="sheet reveal">
+      <h3 class="menu-cat" data-i18n="c1">麺類</h3>
+      <ul class="menu-list">
+        <li><span class="mn">中華そば<small>CHUKA SOBA</small></span><span class="dots"></span><span class="mp">750円</span></li>
+        <li><span class="mn">チャーシューメン<small>CHASHU MEN</small></span><span class="dots"></span><span class="mp">1,050円</span></li>
+        <li><span class="mn">タンメン<small>TANMEN</small></span><span class="dots"></span><span class="mp">900円</span></li>
+        <li><span class="mn">五目そば<small>GOMOKU SOBA</small></span><span class="dots"></span><span class="mp">1,000円</span></li>
+        <li><span class="mn">冷やし中華<small>期間限定 5月〜9月</small></span><span class="dots"></span><span class="mp">950円</span></li>
+      </ul>
+
+      <h3 class="menu-cat" data-i18n="c2">ごはん</h3>
+      <ul class="menu-list">
+        <li><span class="mn">炒飯<small>CHAHAN</small><span class="osusume" data-i18n="rec">おすすめ</span></span><span class="dots"></span><span class="mp">850円</span></li>
+        <li><span class="mn">中華丼<small>CHUKA DON</small></span><span class="dots"></span><span class="mp">900円</span></li>
+        <li><span class="mn">天津飯<small>TENSHIN HAN</small></span><span class="dots"></span><span class="mp">880円</span></li>
+        <li><span class="mn">半炒飯<small>ハーフサイズ</small></span><span class="dots"></span><span class="mp">500円</span></li>
+      </ul>
+
+      <h3 class="menu-cat" data-i18n="c3">一品</h3>
+      <ul class="menu-list">
+        <li><span class="mn">焼き餃子（6個）<small>GYOZA</small><span class="osusume" data-i18n="rec2">名物</span></span><span class="dots"></span><span class="mp">450円</span></li>
+        <li><span class="mn">鶏の唐揚げ<small>KARAAGE</small></span><span class="dots"></span><span class="mp">650円</span></li>
+        <li><span class="mn">レバニラ炒め<small>LEVER NIRA</small></span><span class="dots"></span><span class="mp">800円</span></li>
+        <li><span class="mn">酢豚<small>SUBUTA</small></span><span class="dots"></span><span class="mp">950円</span></li>
+        <li><span class="mn">麻婆豆腐<small>MABO DOFU</small></span><span class="dots"></span><span class="mp">800円</span></li>
+      </ul>
+
+      <h3 class="menu-cat" data-i18n="c4">定食・お飲み物</h3>
+      <ul class="menu-list">
+        <li><span class="mn">餃子定食<small>ごはん・スープ・漬物</small></span><span class="dots"></span><span class="mp">900円</span></li>
+        <li><span class="mn">唐揚げ定食<small>ごはん・スープ・漬物</small></span><span class="dots"></span><span class="mp">1,000円</span></li>
+        <li><span class="mn">瓶ビール<small>大瓶</small></span><span class="dots"></span><span class="mp">600円</span></li>
+        <li><span class="mn">紹興酒<small>グラス</small></span><span class="dots"></span><span class="mp">500円</span></li>
+        <li><span class="mn">ウーロン茶・コーラ</span><span class="dots"></span><span class="mp">250円</span></li>
+      </ul>
+      <p style="margin:1.6rem 0 0;font-size:.85rem;color:#6b5a4b" data-i18n="note">
+        ※ お持ち帰りは餃子・唐揚げ・炒飯のみ承ります。お電話でご予約ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 店の情報 -->
+<section>
+  <div class="wrap">
+    <div class="sec-h reveal">
+      <h2 data-i18n="h3">店のご案内</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="info">
+        <tr><th data-i18n="i1">店名</th><td>中華 福来（ちゅうか ふくらい）</td></tr>
+        <tr><th data-i18n="i2">住所</th><td>東京都台東区浅草〇-〇-〇</td></tr>
+        <tr><th data-i18n="i3">電話</th><td><a href="tel:0300000000" class="tel-row">03-0000-0000</a></td></tr>
+        <tr><th data-i18n="i4">営業時間</th><td>11:30〜14:30／17:00〜21:30（ラストオーダー 21:00）</td></tr>
+        <tr><th data-i18n="i5">定休日</th><td data-i18n="i5v">水曜日（祝日の場合は翌日）</td></tr>
+        <tr><th data-i18n="i6">最寄り駅</th><td data-i18n="i6v">東京メトロ銀座線 浅草駅 3番出口から徒歩5分</td></tr>
+        <tr><th data-i18n="i7">席数</th><td data-i18n="i7v">24席（カウンター8・テーブル16）</td></tr>
+        <tr><th data-i18n="i8">ご案内</th><td data-i18n="i8v">全席禁煙／お子さま用の椅子あり／予約は10名様から承ります</td></tr>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:1.6rem;font-size:.86rem;color:#6b5a4b" data-i18n="mapnote">
+      ※ 実際の制作では、ここにGoogleマップが入ります。
+    </p>
+  </div>
+</section>
+
+<!-- ============================ CTA -->
+<section class="cta pattern">
+  <div class="wrap">
+    <h2 data-i18n="ctat">お待ちしております</h2>
+    <p data-i18n="ctap">
+      ご予約は10名様から承ります。お持ち帰りのご注文もお電話でどうぞ。
+    </p>
+    <a href="tel:0300000000" class="btn">03-0000-0000</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0;font-family:var(--min);font-size:1.15rem;letter-spacing:.18em">中華 福来</p>
+    <p style="margin:.5rem 0 0">東京都台東区浅草〇-〇-〇／TEL 03-0000-0000</p>
+    <div class="copy">
+      これは制作見本として作成した架空の店のサイトです。実在しません。
+      &nbsp;/&nbsp; <a href="../../">制作サービスへ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* 多言語。町中華は外国人観光客の来店が多いので、
+   「営業時間・定休日・場所・持ち帰りの可否」だけでも訳しておくと効きます。 */
+const DICT = {
+  ja:{},
+  en:{
+    since:"Asakusa, since 1977", t1:"Open", t2:"Closed", t2v:"Wednesdays",
+    t3:"Seats", t3v:"8 counter / 16 table", t4:"Payment", t4v:"Cash & QR code",
+    h1:"Our Specialities", h1s:"Made in the same wok for 47 years.",
+    m1:"Pan-fried Gyoza", m1p:"Hand-made wrappers, 600 a day. Often sold out by evening.",
+    m2:"Chuka Soba (Ramen)", m2p:"Pork and chicken bones with aromatic vegetables. Nothing else.",
+    m3:"Fried Rice", m3p:"Cooked fast over a high flame. Stays soft even when cool.",
+    m4:"Fried Chicken", m4p:"Fried twice, only after you order. Our top takeaway item.",
+    h2:"Menu", h2s:"All prices include tax.",
+    c1:"Noodles", c2:"Rice", c3:"À la carte", c4:"Sets & Drinks",
+    rec:"popular", rec2:"signature",
+    note:"* Takeaway is available for gyoza, fried chicken and fried rice only. Please order by phone.",
+    h3:"Information", i1:"Name", i2:"Address", i3:"Phone", i4:"Hours", i5:"Closed",
+    i5v:"Wednesdays (next day if a public holiday)", i6:"Nearest station",
+    i6v:"5 min walk from Asakusa Stn (Ginza Line), Exit 3", i7:"Seats",
+    i7v:"24 seats (8 counter / 16 table)", i8:"Notes",
+    i8v:"Non-smoking / High chairs available / Reservations for 10+ guests",
+    mapnote:"* A Google Map would be embedded here in the actual site.",
+    ctat:"We look forward to seeing you", ctap:"Reservations accepted for 10 or more. Takeaway orders by phone.",
+  },
+  zh:{
+    since:"浅草・创业于1977年", t1:"营业", t2:"休息", t2v:"每周三",
+    t3:"座位", t3v:"吧台8・餐桌16", t4:"支付", t4v:"现金・二维码支付",
+    h1:"招牌菜", h1s:"四十七年，用同一口锅做出来的味道。",
+    m1:"煎饺", m1p:"手工擀皮，每天六百个。晚上常常售罄。",
+    m2:"中华拉面", m2p:"只用猪骨、鸡架和香味蔬菜熬制。",
+    m3:"炒饭", m3p:"大火快炒。凉了也不会变硬。",
+    m4:"炸鸡块", m4p:"点单后现炸两遍。外带最受欢迎。",
+    h2:"菜单", h2s:"价格均含税。",
+    c1:"面类", c2:"饭类", c3:"单品", c4:"套餐・饮品",
+    rec:"推荐", rec2:"招牌",
+    note:"※ 外带仅限煎饺、炸鸡块和炒饭。请提前电话预订。",
+    h3:"店铺信息", i1:"店名", i2:"地址", i3:"电话", i4:"营业时间", i5:"定休日",
+    i5v:"每周三（遇节假日顺延）", i6:"最近车站",
+    i6v:"东京地铁银座线 浅草站 3号出口步行5分钟", i7:"座位数",
+    i7v:"24个座位（吧台8・餐桌16）", i8:"提示",
+    i8v:"全席禁烟／备有儿童座椅／10位以上可预约",
+    mapnote:"※ 实际制作时，这里会嵌入谷歌地图。",
+    ctat:"恭候您的光临", ctap:"10位以上可接受预约。外带请电话订购。",
+  },
+  ko:{
+    since:"아사쿠사・1977년 창업", t1:"영업", t2:"정기휴일", t2v:"수요일",
+    t3:"좌석", t3v:"카운터8・테이블16", t4:"결제", t4v:"현금・QR결제",
+    h1:"대표 메뉴", h1s:"47년 동안 같은 웍으로 만들어 온 맛입니다.",
+    m1:"군만두", m1p:"만두피부터 직접 만듭니다. 하루 600개. 저녁에는 품절되기도 합니다.",
+    m2:"중화소바(라멘)", m2p:"돼지뼈와 닭뼈, 향미 채소만 사용합니다.",
+    m3:"볶음밥", m3p:"센 불에 단숨에. 식어도 딱딱해지지 않습니다.",
+    m4:"닭튀김", m4p:"주문 후 두 번 튀깁니다. 포장 주문이 가장 많습니다.",
+    h2:"메뉴", h2s:"가격은 세금 포함입니다.",
+    c1:"면류", c2:"밥류", c3:"단품", c4:"정식・음료",
+    rec:"인기", rec2:"대표",
+    note:"※ 포장은 군만두・닭튀김・볶음밥만 가능합니다. 전화로 예약해 주세요.",
+    h3:"매장 안내", i1:"상호", i2:"주소", i3:"전화", i4:"영업시간", i5:"정기휴일",
+    i5v:"수요일(공휴일인 경우 다음 날)", i6:"가까운 역",
+    i6v:"도쿄메트로 긴자선 아사쿠사역 3번 출구에서 도보 5분", i7:"좌석 수",
+    i7v:"24석(카운터8・테이블16)", i8:"안내",
+    i8v:"전 좌석 금연／유아용 의자 있음／10인 이상 예약 가능",
+    mapnote:"※ 실제 제작 시에는 여기에 구글 지도가 들어갑니다.",
+    ctat:"기다리고 있겠습니다", ctap:"10인 이상 예약 가능합니다. 포장 주문은 전화로 부탁드립니다.",
+  },
+};
+const LANG_ATTR={ja:"ja",en:"en",zh:"zh-Hans",ko:"ko"};
+const base={};
+document.querySelectorAll('[data-i18n]').forEach(el=>base[el.dataset.i18n]=el.innerHTML);
+function setLang(code){
+  const d=DICT[code]||{};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    el.innerHTML=(code==='ja')?base[k]:(d[k]!==undefined?d[k]:base[k]);
+  });
+  document.documentElement.lang=LANG_ATTR[code]||'ja';
+  document.querySelectorAll('.langbar button').forEach(b=>
+    b.setAttribute('aria-pressed',String(b.dataset.lang===code)));
+  try{localStorage.setItem('demo-chuka-lang',code)}catch(e){}
+}
+document.querySelectorAll('.langbar button').forEach(b=>
+  b.addEventListener('click',()=>setLang(b.dataset.lang)));
+const urlLang=new URLSearchParams(location.search).get('lang');
+if(urlLang&&DICT[urlLang]){setLang(urlLang)}
+else{try{const s=localStorage.getItem('demo-chuka-lang');if(s&&DICT[s])setLang(s)}catch(e){}}
+
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</body>
+</html>

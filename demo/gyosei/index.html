@@ -3,222 +3,557 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>【制作サンプル】さくら行政書士事務所｜相続・許認可のご相談</title>
+<title>【制作サンプル】新井国際行政書士事務所｜外国人雇用・在留資格の専門事務所</title>
 <meta name="description" content="※これはホームページ制作の見本として作成した架空の事務所です。実在しません。">
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="../../assets/style.css">
 <style>
-  :root {
-    --accent: #2b3f6b; --accent-soft: #4a6299; --accent-pale: #eaeff8;
-    --bg-soft: #f7f9fc; --line: #dde3ee;
-  }
-  .fee-note { font-size:.85rem; color:var(--ink-light); margin-top:.4rem; }
-  .worry {
-    background:#fff; border:1px solid var(--line); border-radius:10px;
-    padding:1.3rem 1.5rem; position:relative;
-  }
-  .worry::before {
-    content:"“"; position:absolute; top:.2rem; left:.7rem;
-    font-size:2.6rem; color:var(--accent-pale); line-height:1; font-family:serif;
-  }
-  .worry p { margin:0; padding-left:1.3rem; color:var(--ink-mid); }
-  .profile { display:grid; grid-template-columns:auto 1fr; gap:1.6rem; align-items:start; }
-  .avatar {
-    width:96px; height:96px; border-radius:50%;
-    background:linear-gradient(135deg,var(--accent),var(--accent-soft));
-    color:#fff; display:grid; place-items:center; font-size:1.9rem; font-weight:700;
-  }
-  @media (max-width:520px){ .profile{grid-template-columns:1fr} }
+/* ============================================================
+   士業（外国人雇用・ビザ特化）専用スタイル
+   共通CSSは使わない。工務店＝写真主役／士業＝情報の整理力で信頼を出す、と設計から分ける。
+   狙い：濃紺＋金の格式。数字と一覧で「詳しさ」を可視化する。多言語切替を前面に出す。
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --navy:#16233f;
+  --navy-l:#24345a;
+  --gold:#a8874e;
+  --gold-l:#c9ab74;
+  --paper:#fbfaf7;
+  --ink:#1a1d24;
+  --gray:#5d6472;
+  --line:#dfe2e8;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{overflow-x:clip;max-width:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.9;
+  letter-spacing:.02em;
+  /* ★欧文フォントを先に書く。日本語フォントを先頭にすると、ベトナム語の声調記号
+     （về/miễn/lần など）を日本語フォントが描けず、記号が分離して表示される。
+     多言語サイトでは「ラテン系 → 日本語 → sans-serif」の順が定石。 */
+  font-family:"Helvetica Neue",Helvetica,Arial,"Noto Sans",
+              "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--navy-l)}
+.wrap{width:min(1100px,100% - 2.4rem);margin-inline:auto}
+.narrow{width:min(780px,100% - 2.4rem);margin-inline:auto}
+
+/* ---- 上部バー：対応言語を最初に見せる ---- */
+.topbar{background:var(--navy);color:#cdd5e4;font-size:.78rem;padding:.45rem 0}
+.topbar .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
+.langs{display:flex;gap:.15rem;flex-wrap:wrap}
+.langs button{background:none;border:1px solid rgba(255,255,255,.28);color:#cdd5e4;
+  font:inherit;padding:.12rem .6rem;cursor:pointer;border-radius:2px;transition:.15s}
+.langs button:hover{border-color:var(--gold-l);color:#fff}
+.langs button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:700}
+
+/* ---- ヘッダー ---- */
+.hd{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:1rem}
+.brand{text-decoration:none;color:var(--ink);line-height:1.4}
+.brand b{display:block;font-size:1.08rem;letter-spacing:.06em;font-weight:700}
+.brand span{display:block;font-size:.68rem;color:var(--gray);letter-spacing:.14em}
+.hd nav{display:flex;gap:1.5rem;align-items:center}
+.hd nav a{color:var(--gray);text-decoration:none;font-size:.88rem}
+.hd nav a:hover{color:var(--navy)}
+.cta-btn{background:var(--navy);color:#fff!important;padding:.75rem 1.5rem;border-radius:3px;
+  font-weight:700;font-size:.88rem;text-decoration:none;white-space:nowrap}
+.cta-btn:hover{background:var(--navy-l)}
+@media(max-width:900px){.hd nav a:not(.cta-btn){display:none}}
+
+/* ---- ヒーロー ---- */
+.hero{background:linear-gradient(160deg,var(--navy) 0%,#0f1830 100%);color:#fff;
+  padding:clamp(3rem,7vw,5rem) 0;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-30%;right:-8%;width:520px;height:520px;
+  border:1px solid rgba(168,135,78,.28);border-radius:50%}
+.hero::after{content:"";position:absolute;top:-14%;right:6%;width:340px;height:340px;
+  border:1px solid rgba(168,135,78,.18);border-radius:50%}
+.hero .wrap{position:relative;z-index:2}
+.hero .tag{display:inline-block;border:1px solid var(--gold);color:var(--gold-l);
+  font-size:.75rem;letter-spacing:.14em;padding:.3rem 1rem;margin-bottom:1.3rem}
+.hero h1{font-size:clamp(1.5rem,4.2vw,2.5rem);line-height:1.55;margin:0 0 1.2rem;font-weight:700}
+.hero h1 em{font-style:normal;color:var(--gold-l)}
+.hero .lead{margin:0 0 2rem;max-width:40rem;color:#c3cbdb;font-size:clamp(.92rem,2vw,1.02rem)}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-g{background:var(--gold);color:#fff;text-decoration:none;padding:.95rem 2rem;
+  border-radius:3px;font-weight:700;font-size:.95rem}
+.btn-g:hover{background:#967843}
+.btn-o{border:1px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;
+  padding:.95rem 2rem;border-radius:3px;font-size:.95rem}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+
+/* ---- 数字 ---- */
+.stats{background:#fff;border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:1px;background:var(--line)}
+.stats div{background:#fff;padding:1.8rem 1rem;text-align:center}
+.stats .n{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700;color:var(--navy);line-height:1.2}
+.stats .n small{font-size:.85rem;color:var(--gray);font-weight:400;margin-left:.15rem}
+.stats .l{font-size:.8rem;color:var(--gray);margin-top:.3rem}
+
+/* ---- 共通セクション ---- */
+section{padding:clamp(3rem,7vw,5rem) 0}
+.sec-en{display:block;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:.6rem}
+.sec-t{font-size:clamp(1.3rem,3.2vw,1.9rem);margin:0 0 .8rem;line-height:1.5;font-weight:700}
+.sec-l{color:var(--gray);margin:0 0 2.6rem;max-width:44rem;font-size:.95rem}
+
+/* ---- 入口を2つに分ける ---- */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:760px){.doors{grid-template-columns:1fr}}
+.door{background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy);
+  padding:2rem 1.8rem;display:flex;flex-direction:column}
+.door.b{border-top-color:var(--gold)}
+.door h3{margin:0 0 .3rem;font-size:1.15rem}
+.door .sub{color:var(--gray);font-size:.82rem;margin:0 0 1.2rem}
+.door ul{list-style:none;padding:0;margin:0 0 1.5rem;font-size:.92rem}
+.door li{padding:.5rem 0 .5rem 1.5rem;position:relative;border-bottom:1px dashed var(--line);color:var(--gray)}
+.door li::before{content:"▸";position:absolute;left:.2rem;color:var(--gold)}
+.door a{margin-top:auto;text-decoration:none;font-weight:700;color:var(--navy);font-size:.92rem}
+
+/* ---- 在留資格の一覧（専門性の可視化） ---- */
+.visa{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:.8rem}
+.visa div{background:#fff;border:1px solid var(--line);padding:1rem 1.1rem;font-size:.88rem}
+.visa b{display:block;color:var(--navy);margin-bottom:.15rem;font-size:.95rem}
+.visa span{color:var(--gray);font-size:.8rem;line-height:1.7;display:block}
+
+/* ---- 不許可理由：専門性が一番出るところ ---- */
+.deny{border-left:3px solid var(--gold);background:#fff;padding:1.6rem 1.8rem;margin-bottom:1rem}
+.deny h4{margin:0 0 .5rem;font-size:1.02rem;color:var(--navy)}
+.deny p{margin:0;color:var(--gray);font-size:.91rem}
+.deny .fix{margin-top:.9rem;padding-top:.9rem;border-top:1px dashed var(--line);
+  font-size:.89rem;color:var(--ink)}
+.deny .fix b{color:var(--gold);margin-right:.4rem}
+
+/* ---- 料金表 ---- */
+.table-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem;background:#fff}
+th,td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+thead th{background:var(--navy);color:#fff;font-weight:700;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+tbody tr:hover{background:#f6f7fa}
+
+/* ---- 対応言語 ---- */
+.langgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.langgrid div{background:var(--navy);color:#fff;padding:1.3rem 1rem;text-align:center;border-radius:3px}
+.langgrid b{display:block;font-size:1.05rem;margin-bottom:.2rem}
+.langgrid span{font-size:.76rem;color:#aeb9cd}
+
+/* ---- 事務所 ---- */
+.office{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+@media(max-width:820px){.office{grid-template-columns:1fr;gap:1.6rem}}
+.office dl{display:grid;grid-template-columns:7.5rem 1fr;margin:0;font-size:.9rem}
+.office dt{color:var(--gray);padding:.7rem 0;border-bottom:1px solid var(--line)}
+.office dd{margin:0;padding:.7rem 0;border-bottom:1px solid var(--line)}
+
+/* ---- CTA ---- */
+.cta-band{background:var(--navy);color:#fff;text-align:center}
+.cta-band h2{font-size:clamp(1.25rem,3.2vw,1.8rem);margin:0 0 1rem}
+.cta-band p{color:#c3cbdb;margin:0 auto 2rem;max-width:38rem;font-size:.94rem}
+.telbig{display:inline-block;font-size:clamp(1.6rem,4.6vw,2.2rem);color:#fff;
+  text-decoration:none;font-weight:700;letter-spacing:.04em}
+
+footer{background:#0f1830;color:#9aa5bb;padding:2.8rem 0 1.6rem;font-size:.85rem}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem;margin-bottom:1.8rem}
+footer h5{color:#fff;margin:0 0 .7rem;font-size:.92rem}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:.4rem}
+footer a{color:#c3cbdb}
+.copy{border-top:1px solid #26314c;padding-top:1.2rem;font-size:.76rem;color:#76819a}
+
+.demo-note{background:#7a4a12;color:#fff;text-align:center;padding:.65rem 1rem;font-size:.82rem;line-height:1.7}
+.demo-note a{color:#ffdba8;font-weight:700}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div class="demo-banner">
+<div class="demo-note">
   これはホームページ制作の<strong>見本</strong>として作成した<strong>架空の行政書士事務所</strong>です。実在しません。
-  <a href="../../">制作サービスのページへ戻る</a>
+  <a href="../../">制作サービスへ戻る</a>
 </div>
 
-<header class="site-header">
+<div class="topbar">
   <div class="wrap">
-    <a class="brand" href="./">さくら行政書士事務所<small>ADMINISTRATIVE SCRIVENER</small></a>
-    <nav class="nav">
-      <a href="#service">取扱業務</a>
-      <a href="#fee">費用</a>
-      <a href="#profile">事務所案内</a>
-      <a href="#faq">よくある質問</a>
-      <a href="#contact" class="btn">初回相談は無料</a>
+    <span data-i18n="topbar">外国人雇用・在留資格の専門事務所／初回相談 無料</span>
+    <div class="langs" role="group" aria-label="言語の切り替え">
+      <button data-lang="ja" aria-pressed="true">日本語</button>
+      <button data-lang="en" aria-pressed="false">English</button>
+      <button data-lang="vi" aria-pressed="false">Tiếng Việt</button>
+      <button data-lang="zh" aria-pressed="false">中文</button>
+      <button data-lang="ne" aria-pressed="false">नेपाली</button>
+    </div>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <b>新井国際行政書士事務所</b>
+      <span>ARAI INTERNATIONAL IMMIGRATION LAW OFFICE</span>
+    </a>
+    <nav>
+      <a href="#doors" data-i18n="nav1">企業の方／ご本人</a>
+      <a href="#visa" data-i18n="nav2">扱える在留資格</a>
+      <a href="#deny" data-i18n="nav3">不許可の理由</a>
+      <a href="#fee" data-i18n="nav4">費用</a>
+      <a href="#contact" class="cta-btn" data-i18n="navcta">無料相談</a>
     </nav>
   </div>
 </header>
 
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow">さいたま市・初回相談無料</span>
-    <h1>「これ、誰に相談すればいいのか<br>分からない」から始めて大丈夫です。</h1>
-    <p class="lead">
-      相続の手続き、お店を始めるための許可、車庫証明、内容証明。
-      役所に出す書類は種類が多く、どこから手をつければいいのか分かりにくいものです。
-      まずはお話をお聞きして、必要な手続きと費用を整理するところからお手伝いします。
+    <span class="tag" data-i18n="herotag">申請取次行政書士</span>
+    <h1 data-i18n="heroh1">不許可になった案件を、<br><em>もう一度</em>組み立て直します。</h1>
+    <p class="lead" data-i18n="herolead">
+      在留資格の申請は、書類が揃っていれば通るものではありません。
+      「なぜこの人が、この会社で、この仕事をする必要があるのか」を
+      入管に伝わる形で立証できるかどうかで結果が変わります。
+      当事務所は外国人雇用と在留資格だけを扱い、年間200件以上の申請に携わっています。
     </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-lg">無料で相談する</a>
-      <a href="#fee" class="btn btn-ghost btn-lg">費用を見る</a>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-g" data-i18n="btn1">無料で相談する</a>
+      <a href="#deny" class="btn-o" data-i18n="btn2">不許可になる理由を見る</a>
     </div>
-    <p class="muted" style="margin-top:1.4rem">
-      初回のご相談は60分まで無料です。ご相談だけで終わっても構いません。
-    </p>
   </div>
 </div>
 
-<section id="worry">
+<div class="stats">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="label">CASE</span>
-      <h2>こんなご相談をお受けしています</h2>
-    </div>
-    <div class="grid grid-3">
-      <div class="worry reveal"><p>父が亡くなり、銀行から「遺産分割協議書を出してください」と言われたが、何を書けばいいのか分からない。</p></div>
-      <div class="worry reveal"><p>飲食店を開きたい。保健所の営業許可と深夜酒類提供の届出、どちらも必要なのか知りたい。</p></div>
-      <div class="worry reveal"><p>建設業の許可を取りたいが、要件を満たしているのか自分では判断できない。</p></div>
-      <div class="worry reveal"><p>外国人スタッフを雇いたい。在留資格の変更が必要かどうか相談したい。</p></div>
-      <div class="worry reveal"><p>貸したお金が返ってこない。内容証明を送りたいが書き方が分からない。</p></div>
-      <div class="worry reveal"><p>会社の車を増やしたので車庫証明が必要。手続きを代行してほしい。</p></div>
-    </div>
+    <div><div class="n">200<small>件／年</small></div><div class="l" data-i18n="st1">申請取次の実績</div></div>
+    <div><div class="n">98.2<small>%</small></div><div class="l" data-i18n="st2">許可率（直近3年）</div></div>
+    <div><div class="n">5<small>言語</small></div><div class="l" data-i18n="st3">対応言語</div></div>
+    <div><div class="n">14<small>年</small></div><div class="l" data-i18n="st4">この分野ひと筋</div></div>
   </div>
-</section>
+</div>
 
-<section id="service" class="soft">
+<!-- ============================ 入口を分ける -->
+<section id="doors">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="label">SERVICE</span>
-      <h2>取扱業務</h2>
+    <div class="reveal">
+      <span class="sec-en">FOR YOU</span>
+      <h2 class="sec-t">どちらのお立場ですか</h2>
+      <p class="sec-l">お立場によって、必要な手続きも準備する書類もまったく違います。</p>
     </div>
-    <div class="grid grid-2">
-      <div class="card reveal"><h3>相続・遺言</h3>
-        <p>遺産分割協議書の作成、相続関係説明図、戸籍の収集、遺言書の起案。銀行や法務局に提出する書類一式をご用意します。</p></div>
-      <div class="card reveal"><h3>建設業許可</h3>
-        <p>新規申請、更新、業種追加、決算変更届。要件を満たしているかの事前確認から承ります。</p></div>
-      <div class="card reveal"><h3>飲食店・風営法の許可</h3>
-        <p>飲食店営業許可、深夜酒類提供飲食店営業の届出、古物商許可。図面の作成も含めて代行します。</p></div>
-      <div class="card reveal"><h3>在留資格（ビザ）</h3>
-        <p>就労資格の申請・変更・更新、永住許可申請。雇用する企業側のご相談にも対応します。</p></div>
-      <div class="card reveal"><h3>契約書・内容証明</h3>
-        <p>各種契約書の作成・チェック、内容証明郵便の作成と発送代行。</p></div>
-      <div class="card reveal"><h3>自動車関係</h3>
-        <p>車庫証明、名義変更、出張封印。法人のお客様の複数台まとめてのご依頼も承ります。</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="fee">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="label">FEE</span>
-      <h2>費用</h2>
-      <p>「いくらかかるか分からない」が一番のご不安だと思いますので、目安をお出しします。</p>
-    </div>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>業務</th><th class="num">報酬（税別）</th><th class="num">実費（印紙代等）</th></tr></thead>
-        <tbody>
-          <tr><td>遺産分割協議書の作成</td><td class="num">55,000円〜</td><td class="num">戸籍取得の実費</td></tr>
-          <tr><td>相続手続き一式（戸籍収集含む）</td><td class="num">120,000円〜</td><td class="num">実費別途</td></tr>
-          <tr><td>建設業許可（新規・知事許可）</td><td class="num">130,000円〜</td><td class="num">90,000円</td></tr>
-          <tr><td>建設業許可の更新</td><td class="num">55,000円〜</td><td class="num">50,000円</td></tr>
-          <tr><td>飲食店営業許可</td><td class="num">45,000円〜</td><td class="num">16,000円程度</td></tr>
-          <tr><td>深夜酒類提供飲食店営業の届出</td><td class="num">70,000円〜</td><td class="num">—</td></tr>
-          <tr><td>古物商許可</td><td class="num">45,000円〜</td><td class="num">19,000円</td></tr>
-          <tr><td>在留資格変更許可申請</td><td class="num">100,000円〜</td><td class="num">4,000円</td></tr>
-          <tr><td>内容証明の作成・発送</td><td class="num">30,000円〜</td><td class="num">2,000円程度</td></tr>
-          <tr><td>車庫証明</td><td class="num">12,000円〜</td><td class="num">2,700円程度</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="muted mt-2">
-      ※ 案件の内容によって変わります。<strong>着手前に必ずお見積りをお出しし、ご了承をいただいてから進めます。</strong>
-      途中で金額が増えることはありません。
-    </p>
-  </div>
-</section>
-
-<section id="profile" class="soft">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="label">PROFILE</span>
-      <h2>事務所案内</h2>
-    </div>
-    <div class="profile reveal">
-      <div class="avatar">佐藤</div>
-      <div>
-        <h3 style="margin:0 0 .6rem">行政書士　佐藤 さくら</h3>
-        <p style="color:var(--ink-mid)">
-          一般企業で総務を10年務めたのち、行政書士として開業しました。
-          会社側で申請書類を作っていた経験があるので、
-          「役所の言葉が分かりにくい」というお気持ちがよく分かります。
-          専門用語を使わずにご説明することを心がけています。
-        </p>
-        <dl class="deflist" style="margin-top:1.4rem">
-          <dt>事務所名</dt><dd>さくら行政書士事務所</dd>
-          <dt>所在地</dt><dd>埼玉県さいたま市〇〇区 1-2-3 〇〇ビル 4階</dd>
-          <dt>電話</dt><dd>048-000-0000</dd>
-          <dt>受付時間</dt><dd>平日 9:00〜18:00（土日祝は事前予約で対応）</dd>
-          <dt>登録番号</dt><dd>第00000000号（埼玉県行政書士会所属）</dd>
-        </dl>
+    <div class="doors reveal">
+      <div class="door">
+        <h3 data-i18n="d1t">企業のご担当者さま</h3>
+        <p class="sub" data-i18n="d1s">外国人を雇いたい・すでに雇っている</p>
+        <ul>
+          <li data-i18n="d1a">内定を出したが、就労できる在留資格に変更できるか分からない</li>
+          <li data-i18n="d1b">技能実習から特定技能へ切り替えたい</li>
+          <li data-i18n="d1c">海外から直接呼び寄せたい（在留資格認定証明書）</li>
+          <li data-i18n="d1d">雇用中の社員の更新手続きをまとめて任せたい</li>
+          <li data-i18n="d1e">不法就労助長罪にならないか確認したい</li>
+        </ul>
+        <a href="#contact" data-i18n="d1cta">企業向けの相談へ →</a>
+      </div>
+      <div class="door b">
+        <h3 data-i18n="d2t">外国人ご本人・ご家族</h3>
+        <p class="sub" data-i18n="d2s">日本で働きたい・住み続けたい</p>
+        <ul>
+          <li data-i18n="d2a">在留期間の更新が不許可になった</li>
+          <li data-i18n="d2b">転職したので在留資格を変更したい</li>
+          <li data-i18n="d2c">家族を日本に呼びたい</li>
+          <li data-i18n="d2d">永住許可を申請したい</li>
+          <li data-i18n="d2e">日本人と結婚したので配偶者ビザを取りたい</li>
+        </ul>
+        <a href="#contact" data-i18n="d2cta">母国語で相談する →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="narrow">
-    <div class="sec-head reveal">
-      <span class="label">FAQ</span>
-      <h2>よくある質問</h2>
+<!-- ============================ 在留資格一覧 -->
+<section id="visa" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-en">STATUS OF RESIDENCE</span>
+      <h2 class="sec-t">扱える在留資格</h2>
+      <p class="sec-l">
+        「うちの業種でも雇えるのか」が一番のご不安だと思います。該当しそうなものをご覧ください。
+        判断に迷う場合こそご相談ください。
+      </p>
     </div>
-    <details class="reveal"><summary>相談だけでも大丈夫ですか。</summary>
-      <p>もちろんです。初回60分は無料でお受けしています。お話を伺った結果、
-      手続きが不要だと分かることもあります。その場合も費用はいただきません。</p></details>
-    <details class="reveal"><summary>何を持っていけばいいですか。</summary>
-      <p>お手元にある書類（役所からの通知、契約書など）をお持ちください。
-      何も無くても、状況をお聞かせいただければ必要なものをご案内します。</p></details>
-    <details class="reveal"><summary>土日しか時間が取れません。</summary>
-      <p>事前にご予約いただければ、土日祝も対応いたします。
-      オンラインでのご相談も承っています。</p></details>
-    <details class="reveal"><summary>弁護士に頼むべき案件かどうか分かりません。</summary>
-      <p>お話を伺い、行政書士では扱えない内容（争いのある案件など）であれば、
-      その旨をはっきりお伝えし、適切な専門家をご紹介します。無理にお引き受けすることはありません。</p></details>
+    <div class="visa reveal">
+      <div><b>技術・人文知識・国際業務</b><span>エンジニア、通訳、営業、経理、デザイナーなど。いわゆる就労ビザの中心。</span></div>
+      <div><b>特定技能 1号・2号</b><span>介護、外食、建設、農業、宿泊、製造など16分野。実習からの移行も。</span></div>
+      <div><b>技能実習</b><span>受入計画の認定、監理団体との調整を含めて対応します。</span></div>
+      <div><b>経営・管理</b><span>外国人の方が日本で会社を作る場合。事業計画の妥当性が要になります。</span></div>
+      <div><b>技能</b><span>調理師（中華・エスニック等）、スポーツ指導者、パイロットなど。</span></div>
+      <div><b>企業内転勤</b><span>海外の本社・支店から日本へ異動させる場合。</span></div>
+      <div><b>日本人の配偶者等</b><span>結婚による在留。偽装を疑われないための立証が重要です。</span></div>
+      <div><b>定住者</b><span>離婚後の在留継続、日系人の方など。個別事情の説明が要になります。</span></div>
+      <div><b>家族滞在</b><span>就労中の方が配偶者やお子さまを呼び寄せる場合。</span></div>
+      <div><b>永住許可</b><span>要件の充足確認から。納税・年金の記録が結果を左右します。</span></div>
+      <div><b>帰化許可申請</b><span>法務局への申請。必要書類が非常に多いため一緒に進めます。</span></div>
+      <div><b>資格外活動許可</b><span>留学生のアルバイト、副業の可否など。</span></div>
+    </div>
   </div>
 </section>
 
-<section class="cta" id="contact">
+<!-- ============================ 不許可の理由（専門性の証明） -->
+<section id="deny">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-en">WHY REJECTED</span>
+      <h2 class="sec-t">不許可になる理由は、だいたい決まっています</h2>
+      <p class="sec-l">
+        実際にご相談を受けた不許可案件で、原因として多かったものを挙げます。
+        当てはまりそうな場合は、申請前にご相談ください。出してしまったあとより、はるかに楽です。
+      </p>
+    </div>
+
+    <div class="deny reveal">
+      <h4>1. 仕事の内容と学歴・職歴がつながっていない</h4>
+      <p>
+        「技術・人文知識・国際業務」で最も多い理由です。大学の専攻と実際の業務に関連性が求められますが、
+        職務内容を抽象的に書いてしまい、入管に「単純労働では」と判断されるケースが目立ちます。
+      </p>
+      <p class="fix"><b>対策</b>1日の業務を時間単位で分解し、専門知識を使う場面を具体的に書き出します。関連性は「説明する」ものであって「あるかどうか」だけではありません。</p>
+    </div>
+
+    <div class="deny reveal">
+      <h4>2. 会社の規模・決算に対して給与が不自然</h4>
+      <p>
+        赤字決算の会社が高い給与で採用しようとすると、支払い能力を疑われます。
+        逆に日本人と比べて明らかに低い給与も、同等報酬要件に反するとして不許可になります。
+      </p>
+      <p class="fix"><b>対策</b>決算書の見せ方と、事業計画による将来の説明を添えます。同業他社の賃金水準の資料を付けることもあります。</p>
+    </div>
+
+    <div class="deny reveal">
+      <h4>3. 前回の在留中に問題があった</h4>
+      <p>
+        資格外活動の時間超過（週28時間の壁）、住居地の届出漏れ、税金や年金の未納。
+        本人が軽く考えていることが、更新や永住で必ず効いてきます。
+      </p>
+      <p class="fix"><b>対策</b>隠さず、経緯と是正済みであることを示す資料を揃えます。未納は追納してから申請するのが原則です。</p>
+    </div>
+
+    <div class="deny reveal">
+      <h4>4. 結婚の実体を示せていない</h4>
+      <p>
+        配偶者ビザで多い理由です。交際期間が短い、年齢差が大きい、共通言語が不明瞭といった事情があると、
+        入管は慎重に見ます。写真を数枚出すだけでは足りません。
+      </p>
+      <p class="fix"><b>対策</b>出会いから現在までを時系列で文章化し、やり取りの記録や渡航歴と突き合わせて矛盾がない形にまとめます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 料金 -->
+<section id="fee" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-en">FEE</span>
+      <h2 class="sec-t">費用</h2>
+      <p class="sec-l">着手前に必ずお見積りをお出しします。途中で増えることはありません。</p>
+    </div>
+    <div class="table-scroll reveal">
+      <table>
+        <thead><tr><th>手続き</th><th class="r">報酬（税別）</th><th class="r">印紙代</th></tr></thead>
+        <tbody>
+          <tr><td>在留資格認定証明書交付申請（呼び寄せ）</td><td class="r">120,000円〜</td><td class="r">—</td></tr>
+          <tr><td>在留資格変更許可申請（就労へ）</td><td class="r">100,000円〜</td><td class="r">4,000円</td></tr>
+          <tr><td>在留期間更新許可申請</td><td class="r">50,000円〜</td><td class="r">4,000円</td></tr>
+          <tr><td>特定技能（1号）支援計画の作成含む</td><td class="r">180,000円〜</td><td class="r">4,000円</td></tr>
+          <tr><td>永住許可申請</td><td class="r">150,000円〜</td><td class="r">8,000円</td></tr>
+          <tr><td>日本人の配偶者等（結婚ビザ）</td><td class="r">130,000円〜</td><td class="r">4,000円</td></tr>
+          <tr><td>帰化許可申請</td><td class="r">200,000円〜</td><td class="r">—</td></tr>
+          <tr><td>不許可案件の再申請（理由の分析含む）</td><td class="r">150,000円〜</td><td class="r">実費</td></tr>
+          <tr><td>顧問契約（月次・更新手続き込み）</td><td class="r">30,000円／月〜</td><td class="r">実費</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--gray);font-size:.86rem;margin-top:1.2rem">
+      ※ 不許可となった場合、当事務所の責による場合は報酬を全額返金します（印紙代を除く）。
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 対応言語 -->
+<section id="langs">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-en">LANGUAGES</span>
+      <h2 class="sec-t">母国語で相談できます</h2>
+      <p class="sec-l">
+        通訳を介すると、細かい事情が抜け落ちます。事情が抜けた申請書は通りません。
+        当事務所は下記の言語で直接お話を伺えます。
+      </p>
+    </div>
+    <div class="langgrid reveal">
+      <div><b>日本語</b><span>Japanese</span></div>
+      <div><b>English</b><span>英語</span></div>
+      <div><b>Tiếng Việt</b><span>ベトナム語</span></div>
+      <div><b>中文</b><span>中国語</span></div>
+      <div><b>नेपाली</b><span>ネパール語</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 事務所 -->
+<section id="office" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap office">
+    <div class="reveal">
+      <span class="sec-en">OFFICE</span>
+      <h2 class="sec-t">事務所案内</h2>
+      <p style="color:var(--gray);font-size:.94rem">
+        入管業務だけを14年扱ってきました。他の分野は受けていません。
+        分野を絞っているぶん、審査の傾向の変化に気づけます。
+      </p>
+      <p style="color:var(--gray);font-size:.94rem">
+        申請取次行政書士として、ご本人が入管へ出向かなくても手続きを進められます。
+        平日に会社を休めない方でもご相談ください。
+      </p>
+    </div>
+    <div class="reveal">
+      <dl>
+        <dt>事務所名</dt><dd>新井国際行政書士事務所</dd>
+        <dt>代表</dt><dd>新井 健一（申請取次行政書士）</dd>
+        <dt>所在地</dt><dd>埼玉県川口市〇〇 1-2-3 〇〇ビル 5階</dd>
+        <dt>電話</dt><dd><a href="tel:0480000000">048-000-0000</a></dd>
+        <dt>受付</dt><dd>平日 9:00〜19:00／土日も事前予約で対応</dd>
+        <dt>登録番号</dt><dd>第00000000号（埼玉県行政書士会）</dd>
+        <dt>取次番号</dt><dd>東行第00000号</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA -->
+<section class="cta-band" id="contact">
   <div class="narrow">
-    <h2>初回のご相談は無料です</h2>
-    <p>「これは相談していい内容だろうか」と迷われる必要はありません。まずはお気軽にご連絡ください。</p>
-    <p style="margin-bottom:.6rem"><a href="tel:0480000000" style="color:#fff;font-size:1.8rem;font-weight:700;text-decoration:none">048-000-0000</a></p>
-    <p style="opacity:.9;margin-bottom:2rem">平日 9:00〜18:00</p>
-    <a href="mailto:example@example.com?subject=%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87%E3%81%AE%E3%81%94%E4%BE%9D%E9%A0%BC" class="btn btn-lg">メールで相談する</a>
+    <h2 data-i18n="ctat">まだ申請していない段階でご相談ください</h2>
+    <p data-i18n="ctap">
+      一度不許可になると、次の申請は確実に厳しく見られます。
+      出す前の30分が、その後を大きく変えます。初回相談は無料です。
+    </p>
+    <a href="tel:0480000000" class="telbig">048-000-0000</a>
+    <p style="margin:.6rem 0 2rem;font-size:.85rem;color:#aeb9cd">平日 9:00〜19:00／土日も事前予約で対応</p>
+    <a href="mailto:example@example.com?subject=%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87" class="btn-g" data-i18n="ctabtn">メールで相談する</a>
   </div>
 </section>
 
-<footer class="site-footer">
+<footer>
   <div class="wrap">
     <div class="cols">
-      <div><h4>さくら行政書士事務所</h4>
-        <p style="margin:0">埼玉県さいたま市〇〇区 1-2-3<br>〇〇ビル 4階<br>TEL 048-000-0000</p></div>
-      <div><h4>取扱業務</h4>
-        <ul><li>相続・遺言</li><li>建設業許可</li><li>飲食店・風営法の許可</li><li>在留資格（ビザ）</li><li>契約書・内容証明</li><li>自動車関係</li></ul></div>
-      <div><h4>受付時間</h4>
-        <p style="margin:0">平日 9:00〜18:00<br>土日祝は事前予約で対応<br><br>オンライン相談も<br>承っています。</p></div>
+      <div><h5>新井国際行政書士事務所</h5>
+        <p style="margin:0">埼玉県川口市〇〇 1-2-3<br>〇〇ビル 5階<br>TEL 048-000-0000</p></div>
+      <div><h5>取扱業務</h5><ul>
+        <li>在留資格認定証明書交付申請</li><li>在留資格変更・更新</li><li>特定技能・技能実習</li>
+        <li>永住・帰化</li><li>配偶者ビザ</li><li>企業の顧問契約</li></ul></div>
+      <div><h5>対応言語</h5><p style="margin:0">日本語／English<br>Tiếng Việt／中文<br>नेपाली</p></div>
     </div>
     <div class="copy">
       これは制作見本として作成した架空の事務所のサイトです。実在しません。
-      &nbsp;/&nbsp; <a href="../../">制作サービスのページへ</a>
+      &nbsp;/&nbsp; <a href="../../">制作サービスへ</a>
     </div>
   </div>
 </footer>
 
 <script>
-const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');io.unobserve(e.target);}})},{threshold:.08});
+/* 多言語の切り替え。
+   実際の納品では全文の辞書を持たせます（中華 南国のサイトで6言語ぶん実装済み）。
+   ここは見本なので、上部・ヒーロー・CTAなど主要な箇所だけ差し替えます。 */
+const DICT = {
+  ja: {},
+  en: {
+    topbar:"Immigration & Work Visa Specialists / Free First Consultation",
+    nav1:"For Employers / Individuals", nav2:"Visa Types", nav3:"Why Applications Fail",
+    nav4:"Fees", navcta:"Free Consultation", herotag:"Registered Immigration Lawyer",
+    heroh1:"We rebuild applications<br>that were <em>rejected</em>.",
+    herolead:"A visa application is not approved simply because the documents are complete. What matters is whether you can prove — in the way Immigration expects — why this person, at this company, must do this work. We handle only foreign employment and residence status, with over 200 applications a year.",
+    btn1:"Get a free consultation", btn2:"See why applications fail",
+    st1:"Applications per year", st2:"Approval rate (last 3 yrs)", st3:"Languages", st4:"Years in this field only",
+    d1t:"For Employers", d1s:"Hiring or already employing foreign staff",
+    d1a:"We made an offer but aren't sure the visa can be changed",
+    d1b:"We want to move a technical intern to Specified Skilled Worker",
+    d1c:"We want to bring someone directly from overseas",
+    d1d:"We want to outsource all renewal procedures",
+    d1e:"We want to confirm we are not risking illegal employment",
+    d1cta:"Consult as an employer →",
+    d2t:"For Individuals & Families", d2s:"You want to work or stay in Japan",
+    d2a:"My extension application was rejected",
+    d2b:"I changed jobs and need to change my status",
+    d2c:"I want to bring my family to Japan",
+    d2d:"I want to apply for permanent residence",
+    d2e:"I married a Japanese national and need a spouse visa",
+    d2cta:"Consult in your language →",
+    ctat:"Talk to us before you file",
+    ctap:"Once an application is rejected, the next one is scrutinised far more closely. Thirty minutes before filing can change everything. The first consultation is free.",
+    ctabtn:"Contact us by email",
+  },
+  vi: {
+    topbar:"Văn phòng chuyên về tuyển dụng người nước ngoài và tư cách lưu trú / Tư vấn lần đầu miễn phí",
+    nav1:"Doanh nghiệp / Cá nhân", nav2:"Các loại tư cách lưu trú", nav3:"Lý do bị từ chối",
+    nav4:"Chi phí", navcta:"Tư vấn miễn phí", herotag:"Hành chính sĩ được ủy quyền nộp hồ sơ",
+    heroh1:"Chúng tôi xây dựng lại<br>hồ sơ đã <em>bị từ chối</em>.",
+    herolead:"Hồ sơ tư cách lưu trú không được chấp thuận chỉ vì đủ giấy tờ. Điều quan trọng là chứng minh được lý do vì sao người này, tại công ty này, cần làm công việc này. Chúng tôi chỉ chuyên về tuyển dụng người nước ngoài và tư cách lưu trú, với hơn 200 hồ sơ mỗi năm.",
+    btn1:"Tư vấn miễn phí", btn2:"Xem lý do bị từ chối",
+    st1:"Hồ sơ mỗi năm", st2:"Tỷ lệ được cấp phép (3 năm gần đây)", st3:"Ngôn ngữ", st4:"Năm chuyên sâu lĩnh vực này",
+    ctat:"Hãy tư vấn trước khi nộp hồ sơ",
+    ctap:"Khi đã bị từ chối một lần, hồ sơ tiếp theo sẽ bị xem xét khắt khe hơn nhiều. Ba mươi phút trước khi nộp có thể thay đổi tất cả. Tư vấn lần đầu miễn phí.",
+    ctabtn:"Liên hệ qua email",
+  },
+  zh: {
+    topbar:"外国人雇用・在留资格专门事务所／首次咨询免费",
+    nav1:"企业／本人", nav2:"可办理的在留资格", nav3:"被不许可的原因",
+    nav4:"费用", navcta:"免费咨询", herotag:"申请取次行政书士",
+    heroh1:"我们为<em>被不许可</em>的案件<br>重新构建申请。",
+    herolead:"在留资格申请并非材料齐全就能通过。关键在于能否以入管认可的方式，证明为什么这个人必须在这家公司从事这项工作。本所只承接外国人雇用与在留资格业务，每年办理200件以上。",
+    btn1:"免费咨询", btn2:"查看不许可的原因",
+    st1:"每年申请件数", st2:"许可率（近三年）", st3:"对应语言", st4:"专注该领域的年数",
+    ctat:"请在提交申请之前咨询我们",
+    ctap:"一旦被不许可，下次申请必然会被更严格地审查。提交前的三十分钟，可能改变结果。首次咨询免费。",
+    ctabtn:"通过邮件咨询",
+  },
+  ne: {
+    topbar:"विदेशी रोजगार तथा बसोबास अनुमतिको विशेषज्ञ कार्यालय / पहिलो परामर्श निःशुल्क",
+    nav1:"कम्पनी / व्यक्ति", nav2:"बसोबास अनुमतिका प्रकार", nav3:"किन अस्वीकृत हुन्छ",
+    nav4:"शुल्क", navcta:"निःशुल्क परामर्श", herotag:"आधिकारिक आप्रवासन कानुनविद्",
+    heroh1:"<em>अस्वीकृत</em> भएका निवेदन<br>हामी पुनः तयार गर्छौं।",
+    herolead:"कागजात पूरा भएकै आधारमा बसोबास अनुमति स्वीकृत हुँदैन। यो व्यक्तिले, यही कम्पनीमा, यही काम किन गर्नुपर्छ भन्ने कुरा आप्रवासन कार्यालयले बुझ्ने ढंगले प्रमाणित गर्न सक्नु महत्त्वपूर्ण हुन्छ। हामी विदेशी रोजगार र बसोबास अनुमति मात्र हेर्छौं, वर्षमा २०० भन्दा बढी निवेदन।",
+    btn1:"निःशुल्क परामर्श", btn2:"अस्वीकृतिका कारण हेर्नुहोस्",
+    st1:"वार्षिक निवेदन", st2:"स्वीकृति दर (गत ३ वर्ष)", st3:"भाषा", st4:"यही क्षेत्रमा वर्ष",
+    ctat:"निवेदन दिनुअघि नै सम्पर्क गर्नुहोस्",
+    ctap:"एक पटक अस्वीकृत भएपछि अर्को निवेदन झनै कडा रूपमा हेरिन्छ। पेस गर्नुअघिको तीस मिनेटले धेरै फरक पार्छ। पहिलो परामर्श निःशुल्क।",
+    ctabtn:"इमेलबाट सम्पर्क",
+  },
+};
+const LANG_ATTR = {ja:"ja", en:"en", vi:"vi", zh:"zh-Hans", ne:"ne"};
+const base = {};
+document.querySelectorAll('[data-i18n]').forEach(el => base[el.dataset.i18n] = el.innerHTML);
+
+function setLang(code){
+  const d = DICT[code] || {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    el.innerHTML = (code === 'ja') ? base[k] : (d[k] !== undefined ? d[k] : base[k]);
+  });
+  document.documentElement.lang = LANG_ATTR[code] || 'ja';
+  document.querySelectorAll('.langs button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === code)));
+  try { localStorage.setItem('demo-gyosei-lang', code); } catch(e) {}
+}
+document.querySelectorAll('.langs button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang)));
+// ?lang=en のようにURLでも指定できるようにする。
+// 営業や案内のときに「英語版はこちら」と直接リンクを渡せて便利。
+const urlLang = new URLSearchParams(location.search).get('lang');
+if (urlLang && DICT[urlLang]) {
+  setLang(urlLang);
+} else {
+  try {
+    const saved = localStorage.getItem('demo-gyosei-lang');
+    if (saved && DICT[saved]) setLang(saved);
+  } catch(e) {}
+}
+
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
