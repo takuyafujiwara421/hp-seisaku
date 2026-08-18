@@ -42,7 +42,7 @@ case "${1:-next}" in
   reset)
     rm -f "$STATE"; echo "最初に戻しました。次は 1番です。"; exit 0 ;;
   [1-4])
-    N="$1" ;;
+    N="$1"; echo "$N" > "$STATE" ;;   # 番号指定でも進捗を記録する
   next)
     DONE=0; [ -f "$STATE" ] && DONE=$(cat "$STATE")
     N=$((DONE + 1))
